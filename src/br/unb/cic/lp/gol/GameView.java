@@ -67,6 +67,7 @@ public class GameView {
 			case NEXT_GENERATION : nextGeneration(); break;
 			case HALT : halt();
 		}
+		s.close();
 	}
 	
 	private void makeCellAlive() {
@@ -84,6 +85,7 @@ public class GameView {
 		}while(!validPosition(i,j));
 		
 		controller.makeCellAlive(i, j);
+		s.close();
 	}
 	
 	private void nextGeneration() {
