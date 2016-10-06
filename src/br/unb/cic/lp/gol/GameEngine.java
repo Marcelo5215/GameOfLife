@@ -16,11 +16,11 @@ import java.util.List;
  * 
  * @author rbonifacio
  */
-public class GameEngine {
-	private int height;
-	private int width;
-	private Cell[][] cells;
-	private Statistics statistics;
+public abstract class GameEngine {
+	protected int height;
+	protected int width;
+	protected Cell[][] cells;
+	protected Statistics statistics;
 
 	/**
 	 * Construtor da classe Environment.
@@ -91,9 +91,9 @@ public class GameEngine {
 	 * @throws InvalidParameterException caso a posicao (i, j) nao seja valida.
 	 */
 	public void makeCellAlive(int i, int j) throws InvalidParameterException {
-		if(validPosition(i, j)) {
-			cells[i][j].revive();
-			statistics.recordRevive();
+		if(this.validPosition(i, j)) {
+			this.cells[i][j].revive();
+			this.statistics.recordRevive();
 		}
 		else {
 			new InvalidParameterException("Invalid position (" + i + ", " + j + ")" );
@@ -138,22 +138,16 @@ public class GameEngine {
 	}
 
 	/* verifica se uma celula deve ser mantida viva */
-	private boolean shouldKeepAlive(int i, int j) {
-		return (cells[i][j].isAlive())
-				&& (numberOfNeighborhoodAliveCells(i, j) == 2 || numberOfNeighborhoodAliveCells(i, j) == 3);
-	}
+	protected abstract boolean shouldKeepAlive(int i, int j);
 
 	/* verifica se uma celula deve (re)nascer */
-	private boolean shouldRevive(int i, int j) {
-		return (!cells[i][j].isAlive())
-				&& (numberOfNeighborhoodAliveCells(i, j) == 3);
-	}
+	protected abstract boolean shouldRevive(int i, int j);
 
 	/*
 	 * Computa o numero de celulas vizinhas vivas, dada uma posicao no ambiente
 	 * de referencia identificada pelos argumentos (i,j).
 	 */
-	private int numberOfNeighborhoodAliveCells(int i, int j) {
+	protected int numberOfNeighborhoodAliveCells(int i, int j) {
 		int alive = 0;
 		for (int a = i - 1; a <= i + 1; a++) {
 			for (int b = j - 1; b <= j + 1; b++) {
@@ -168,7 +162,7 @@ public class GameEngine {
 	/*
 	 * Verifica se uma posicao (a, b) referencia uma celula valida no tabuleiro.
 	 */
-	private boolean validPosition(int a, int b) {
+	protected boolean validPosition(int a, int b) {
 		return a >= 0 && a < height && b >= 0 && b < width;
 	}
 
