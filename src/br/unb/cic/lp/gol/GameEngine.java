@@ -3,7 +3,6 @@ package br.unb.cic.lp.gol;
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
-
 /**
  * Representa um ambiente (environment) do jogo GameOfLife.
  *
@@ -151,7 +150,30 @@ public abstract class GameEngine {
 		int alive = 0;
 		for (int a = i - 1; a <= i + 1; a++) {
 			for (int b = j - 1; b <= j + 1; b++) {
-				if (validPosition(a, b)  && (!(a==i && b == j)) && cells[a][b].isAlive()) {
+				if (!validPosition(a, b)) {
+					if((a < 0) && validPosition(height-1, b) && cells[height-1][b].isAlive()){
+						alive++;
+					} else if((a >= height) && validPosition(0, b) && cells[0][b].isAlive()){
+						alive++;
+					}
+					if((b < 0) && validPosition(a, width-1)  && cells[a][width-1].isAlive()){
+						alive++;
+					} else if((b >= width) && validPosition(a, 0) && cells[a][0].isAlive()){
+						alive++;
+					}
+					if((a < 0) && (b < 0) && validPosition(height-1, width-1)  && cells[height-1][width-1].isAlive()){
+						alive++;
+					}
+					if((a >= height) && (b < 0) && validPosition(0, width-1)  && cells[0][width-1].isAlive()){
+						alive++;
+					}
+					if((a < 0) && (b >= height) && validPosition(height-1, 0)  && cells[height-1][0].isAlive()){
+						alive++;
+					}
+					if((a >= height) && (b >= height) && validPosition(0, 0)  && cells[0][0].isAlive()){
+						alive++;
+					}
+				} else if(validPosition(a, b)  && (!(a==i && b == j)) && cells[a][b].isAlive()){
 					alive++;
 				}
 			}

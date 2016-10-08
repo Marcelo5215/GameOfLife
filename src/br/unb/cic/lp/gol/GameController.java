@@ -2,6 +2,7 @@ package br.unb.cic.lp.gol;
 
 import java.security.InvalidParameterException;
 import java.util.concurrent.TimeUnit;
+import java.util.Scanner;
 
 /**
  * Classe que atua como um controlador do
@@ -37,6 +38,7 @@ public class GameController {
 	}
 
 	public void start() {
+		board.update();
 		board.menu();
 	}
 
@@ -52,7 +54,7 @@ public class GameController {
 			engine.nextGeneration();
 			board.update();
 			try {
-				TimeUnit.SECONDS.sleep(1);
+				TimeUnit.MILLISECONDS.sleep(500);
 			} catch (InterruptedException e) {
     			System.out.println(e.getMessage());
 			}
