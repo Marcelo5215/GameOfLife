@@ -5,18 +5,19 @@ import java.util.Scanner;
 /**
  * Atua como um componente de apresentacao (view), exibindo o estado atual do
  * game com uma implementacao baseada em caracteres ASCII.
- * 
+ *
  * @author rbonifacio
  */
 public class GameView {
 	private static final String LINE = "+-----+";
 	private static final String DEAD_CELL = "|     |";
 	private static final String ALIVE_CELL = "|  o  |";
-	
+
 	private static final int INVALID_OPTION = 0;
 	private static final int MAKE_CELL_ALIVE = 1;
 	private static final int NEXT_GENERATION = 2;
-	private static final int HALT = 3; 
+	private static final int DINAMIC = 3;
+	private static final int HALT = 99;
 
 	private GameEngine engine;
 	private GameController controller;
@@ -43,6 +44,9 @@ public class GameView {
 			System.out.println("   " + i);
 			printLine();
 		}
+	}
+
+	public void menu(){
 		printOptions();
 	}
 
@@ -50,52 +54,58 @@ public class GameView {
 		Scanner s = new Scanner(System.in);
 		int option;
 		System.out.println("\n \n");
-		
+
 		do {
-			System.out.println("Select one of the options: \n \n"); 
+			System.out.println("Select one of the options: \n \n");
 			System.out.println("[1] Make a cell alive");
 			System.out.println("[2] Next generation");
-			System.out.println("[3] Halt");
-		
+			System.out.println("[3] Dinamic");
+			System.out.println("[99] Halt");
+
 			System.out.print("\n \n Option: ");
-			
+
 			option = parseOption(s.nextLine());
 		}while(option == 0);
-		
+
 		switch(option) {
 			case MAKE_CELL_ALIVE : makeCellAlive(); break;
 			case NEXT_GENERATION : nextGeneration(); break;
+			case DINAMIC : dinamic(); break;
 			case HALT : halt();
 		}
 		s.close();
 	}
-	
+
 	private void makeCellAlive() {
 		int i, j = 0;
 		Scanner s = new Scanner(System.in);
-		
+
 		do {
 			System.out.print("\n Inform the row number (0 - " + engine.getHeight() + "): " );
-			
+
 			i = s.nextInt();
-			
+
 			System.out.print("\n Inform the column number (0 - " + engine.getWidth() + "): " );
-			
+
 			j = s.nextInt();
 		}while(!validPosition(i,j));
-		
+
 		controller.makeCellAlive(i, j);
 		s.close();
 	}
-	
+
 	private void nextGeneration() {
 		controller.nextGeneration();
 	}
-	
+
+	private void dinamic(){
+		controller.dinamic();
+	}
+
 	private void halt() {
 		controller.halt();
 	}
-	
+
 	private boolean validPosition(int i, int j) {
 		System.out.println(i);
 		System.out.println(j);
@@ -109,7 +119,10 @@ public class GameView {
 		else if (option.equals("2")) {
 			return NEXT_GENERATION;
 		}
-		else if (option.equals("3")) {
+		else if (option.equals("3")){
+			return DINAMIC;
+		}
+		else if (option.equals("99")) {
 			return HALT;
 		}
 		else return INVALID_OPTION;
