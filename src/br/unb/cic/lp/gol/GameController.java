@@ -60,5 +60,6 @@ public class GameController {
 		engine.nextGeneration();
 		board.update();
 	}
+
 	
 }

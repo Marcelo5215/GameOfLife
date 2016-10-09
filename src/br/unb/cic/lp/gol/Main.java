@@ -9,7 +9,7 @@ public class Main {
 		
 		Statistics statistics = new Statistics();
 
-		GameEngine engine = new highLife(10, 10, statistics);	
+		GameEngine engine = new quickLife(3, 3, statistics);	
 		
 		GameView board = new GameView(controller, engine);
 		

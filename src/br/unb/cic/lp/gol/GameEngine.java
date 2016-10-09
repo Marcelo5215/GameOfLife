@@ -28,7 +28,7 @@ public abstract class GameEngine {
 	 * @param height
 	 *            dimensao vertical do ambiente
 	 * @param width
-	 *            dimentsao horizontal do ambiente
+	 *            dimensao horizontal do ambiente
 	 */
 	public GameEngine(int height, int width, Statistics statistics) {
 		this.height = height;
