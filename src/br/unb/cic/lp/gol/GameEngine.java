@@ -184,7 +184,7 @@ public abstract class GameEngine {
 	/*
 	 * Verifica se uma posicao (a, b) referencia uma celula valida no tabuleiro.
 	 */
-	protected boolean validPosition(int a, int b) {
+	public boolean validPosition(int a, int b) {
 		return a >= 0 && a < height && b >= 0 && b < width;
 	}
 

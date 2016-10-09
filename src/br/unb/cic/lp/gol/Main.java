@@ -1,6 +1,7 @@
 package br.unb.cic.lp.gol;
 
 import br.unb.cic.lp.rules.*;
+import br.unb.cic.lp.gol.UI.*;
 
 public class Main {
 
@@ -11,7 +12,7 @@ public class Main {
 
 		GameEngine engine = new quickLife(10, 10, statistics);
 		
-		GameView board = new GameView(controller, engine);
+		GameView board = new TUI(controller, engine);
 
 		controller.setBoard(board);
 		controller.setEngine(engine);
