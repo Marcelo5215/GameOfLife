@@ -42,6 +42,10 @@ public abstract class GameView {
 	protected void halt() {
 		controller.halt();
 	}
+	
+	protected void restore(){
+		controller.restore();
+	}
 
 	protected abstract int parseOption(String option);
 

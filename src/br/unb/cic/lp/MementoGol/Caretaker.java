@@ -4,26 +4,34 @@ import java.util.LinkedList;
 
 public class Caretaker {
 	LinkedList<Memento> list = new LinkedList<Memento>(); 
+	private int numberOfRestores = 0;
 	
 	   public void add(Memento state){
 		   if(list.size() > 9 ){
-		      list.remove(0);
+		      list.removeFirst();
+			  list.addLast(state); 
 		   }
 		   else{
-			   list.add(state); 
+			  list.addLast(state); 
 		   }
-			   
+		   numberOfRestores = list.size();
 	   }
 
 	   public Memento get(int index){
 		   return list.get(index);
 	   }
+	   
 	   public Memento get(){
-		   if(list.size() > 1 ){
+		   if(numberOfRestores == list.size()){
+			   numberOfRestores--;
 			   return list.getLast();
 		   }
+		   else if(numberOfRestores < 1){
+			   numberOfRestores--;
+			   return list.getFirst();
+		   }
 		   else{
-			   return get(0);
+			   return get(numberOfRestores--);
 		   }
 	   }
 }

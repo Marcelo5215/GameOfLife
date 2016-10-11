@@ -14,6 +14,7 @@ public class TUI extends GameView{
 	private static final int MAKE_CELL_ALIVE = 1;
 	private static final int NEXT_GENERATION = 2;
 	private static final int DINAMIC = 3;
+	private static final int RESTORE = 4;
 	private static final int HALT = 99;
 	
 	public TUI (GameController controller, GameEngine engine){
@@ -55,6 +56,7 @@ public class TUI extends GameView{
 			System.out.println("[1] Make a cell alive");
 			System.out.println("[2] Next generation");
 			System.out.println("[3] Dinamic");
+			System.out.println("[4] Restore");
 			System.out.println("[99] Halt");
 
 			System.out.print("\n \n Option: ");
@@ -66,7 +68,8 @@ public class TUI extends GameView{
 			case MAKE_CELL_ALIVE : makeCellAlive(); break;
 			case NEXT_GENERATION : nextGeneration(); break;
 			case DINAMIC : dinamic(); break;
-			case HALT : halt();
+			case HALT : halt(); break;
+			case RESTORE : restore();
 		}
 		s.close();
 	}
@@ -104,6 +107,9 @@ public class TUI extends GameView{
 		else if (option.equals("99")) {
 			return HALT;
 		}
+		else if(option.equals("4")){
+			return RESTORE;
+		} 
 		else return INVALID_OPTION;
 	}
 

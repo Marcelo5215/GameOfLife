@@ -205,4 +205,21 @@ public abstract class GameEngine {
 	public void setWidth(int width) {
 		this.width = width;
 	}
+	
+	public Cell[][] getCells(){
+		return cells;
+	}
+	
+	public void setCells(Cell[][] newState){
+		
+		for(int i = 0 ; i < height; i++){
+			for(int j = 0 ; j < width; j++){
+				if(newState[i][j].isAlive()){
+					cells[i][j].revive();
+				}
+				else
+					cells[i][j].kill();
+		    }   
+	    }
+	}
 }
