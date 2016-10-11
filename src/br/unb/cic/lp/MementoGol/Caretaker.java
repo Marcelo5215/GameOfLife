@@ -31,7 +31,7 @@ public class Caretaker {
 			   return list.getFirst();
 		   }
 		   else{
-			   return get(numberOfRestores--);
+			   return get(--numberOfRestores);
 		   }
 	   }
 }
