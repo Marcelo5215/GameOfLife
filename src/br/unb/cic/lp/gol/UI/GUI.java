@@ -11,9 +11,10 @@ import br.unb.cic.lp.MementoGol.*;
 import br.unb.cic.lp.gol.Cell;
 import br.unb.cic.lp.gol.GameEngine;
 import br.unb.cic.lp.gol.Statistics;
-import br.unb.cic.lp.rules.quickLife;
+import br.unb.cic.lp.rules.*;
 
 import java.util.concurrent.TimeUnit;
+import java.util.ArrayList;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -32,15 +33,27 @@ public class GUI extends javax.swing.JFrame {
 	private boolean flag;
 	private Originator originator;
 	private Caretaker caretaker;
+	private ArrayList<GameEngine> engines;
 	
     /**
      * Creates new form GUI
      */
     public GUI() {
 		statistics = new Statistics();
-		engine = new quickLife(40, 40, statistics);
+		
+    	GameEngine[] AUX = {new quickLife(40, 40, statistics), new highLife(40, 40, statistics),
+    			new lifeWithOutDeath(40, 40, statistics), new seeds(40, 40, statistics)};
+		engines = new ArrayList<GameEngine>();
+		
+		for(GameEngine e : AUX){
+			engines.add(e);
+		}
+		
+		engine = engines.get(0);
+		
 		board = new Cell[engine.getHeight()][engine.getWidth()];
     	Cells =  new CellButton[engine.getHeight()][engine.getWidth()];
+    	
         for(int i =0 ; i< engine.getHeight() ; i++){
         	for(int j =0 ; j< engine.getWidth() ; j++){
             	Cells[i][j] = new CellButton();
@@ -50,6 +63,7 @@ public class GUI extends javax.swing.JFrame {
         }   
         originator = new Originator(engine.getHeight(), engine.getWidth());
 		caretaker = new Caretaker();
+		
         initComponents();
     }
 
@@ -77,10 +91,32 @@ public class GUI extends javax.swing.JFrame {
         KilledCellsText = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	RuleActionPerformed(evt);
+            }
+        });
+        
         jCheckBoxMenuItem2 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	RuleActionPerformed(evt);
+            }
+        });
         jCheckBoxMenuItem3 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	RuleActionPerformed(evt);
+            }
+        });
         jCheckBoxMenuItem4 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	RuleActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -324,6 +360,43 @@ public class GUI extends javax.swing.JFrame {
             }
         }   
     }//GEN-LAST:event_jButton7ActionPerformed
+    
+    private void RuleActionPerformed(ActionEvent evt){
+    	if(evt.getSource().equals(jCheckBoxMenuItem1)){
+    		jCheckBoxMenuItem1.setState(true);
+    		jCheckBoxMenuItem2.setState(false);
+    		jCheckBoxMenuItem3.setState(false);
+    		jCheckBoxMenuItem4.setState(false);
+    		engines.get(0).setCells(engine.getCells());
+    		engine = engines.get(0);
+    	}
+    	else if(evt.getSource().equals(jCheckBoxMenuItem2)){
+    		jCheckBoxMenuItem2.setState(true);
+    		jCheckBoxMenuItem3.setState(false);
+    		jCheckBoxMenuItem4.setState(false);
+    		engines.get(1).setCells(engine.getCells());
+    		engine = engines.get(1);
+    	}
+    	else if(evt.getSource().equals(jCheckBoxMenuItem3)){
+    		jCheckBoxMenuItem1.setState(false);
+    		jCheckBoxMenuItem2.setState(false);
+    		jCheckBoxMenuItem3.setState(true);
+    		jCheckBoxMenuItem4.setState(false);
+    		engines.get(2).setCells(engine.getCells());
+    		engine = engines.get(2);
+    	}
+    	else if(evt.getSource().equals(jCheckBoxMenuItem4)){
+    		jCheckBoxMenuItem1.setState(false);
+    		jCheckBoxMenuItem2.setState(false);
+    		jCheckBoxMenuItem3.setState(false);
+    		jCheckBoxMenuItem4.setState(true);
+    		engines.get(3).setCells(engine.getCells());
+    		engine = engines.get(3);
+    	}
+    	else 
+    		return;
+    }
+    
     
     /**
      * @param args the command line arguments
