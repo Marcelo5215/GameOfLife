@@ -45,15 +45,29 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jButton1" max="32767" attributes="0"/>
-                          <Component id="jButton2" max="32767" attributes="0"/>
-                          <Component id="jButton3" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jButton4" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jButton5" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jButton6" max="32767" attributes="0"/>
-                      </Group>
                       <Component id="jButton7" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jButton2" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jButton3" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jButton4" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jButton5" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jButton6" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                  <Component id="KilledCellsText" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="RevivedCellsText" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel1" pref="744" max="32767" attributes="0"/>
@@ -66,8 +80,11 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jPanel1" max="32767" attributes="0"/>
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jPanel1" pref="463" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
                           <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jButton2" min="-2" max="-2" attributes="0"/>
@@ -81,10 +98,19 @@
                           <Component id="jButton5" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jButton6" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="153" max="32767" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="RevivedCellsText" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="KilledCellsText" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -150,6 +176,26 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton7ActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Revided Cells :"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Killed Cells:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="RevivedCellsText">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="RC"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="KilledCellsText">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="RC"/>
+          </Properties>
         </Component>
         <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
           <SubComponents>
