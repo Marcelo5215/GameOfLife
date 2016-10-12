@@ -9,7 +9,9 @@ public class KeyEventDemo extends JFrame
         implements KeyListener,
         ActionListener
 {
-    JTextArea displayArea;
+	
+	private static final long serialVersionUID = 3634143447521803724L;
+	JTextArea displayArea;
     JTextField typingArea;
     static final String newline = System.getProperty("line.separator");
      

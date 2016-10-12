@@ -14,12 +14,18 @@ public class highLife extends GameEngine{
 		super(height, width, statistics);
 	}
 	
+	public highLife(int height, int width, Statistics statistics, Cell[][] newCells) {
+		super(height, width, statistics, newCells);
+	}
+	
 	//DEFINICAO DOS METODOS ABSTRATOS (REGRAS) 
+        @Override
 	protected boolean shouldKeepAlive(int i, int j) {
 		return (cells[i][j].isAlive())
 				&& (numberOfNeighborhoodAliveCells(i, j) == 2 || numberOfNeighborhoodAliveCells(i, j) == 3);
 	}
 	
+        @Override
 	protected boolean shouldRevive(int i, int j) {
 		return (!cells[i][j].isAlive())
 				&& (numberOfNeighborhoodAliveCells(i, j) == 6);

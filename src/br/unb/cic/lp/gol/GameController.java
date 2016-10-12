@@ -3,6 +3,7 @@ package br.unb.cic.lp.gol;
 import java.security.InvalidParameterException;
 import java.util.concurrent.TimeUnit;
 import br.unb.cic.lp.MementoGol.*;
+import br.unb.cic.lp.rules.*;
 
 /**
  * Classe que atua como um controlador do
@@ -86,6 +87,13 @@ public class GameController {
 	
 	public void restore(){
 		engine.setCells(originator.restoreFromMemento(caretaker.get()));
+		board.update();
+		board.menu();
+	}
+
+	public void changeRule(){
+		GameEngine newEngine = new lifeWithOutDeath(10, 10, statistics, engine.getCells());
+		engine = newEngine;
 		board.update();
 		board.menu();
 	}
