@@ -11,8 +11,8 @@ import br.unb.cic.lp.gol.*;
 
 public class quickLife extends GameEngine{
 
-	public quickLife(int height, int width, Statistics statistics){
-		super(height, width, statistics);
+	public quickLife(){
+		super();
 	}
 
 

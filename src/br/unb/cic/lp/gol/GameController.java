@@ -2,6 +2,9 @@ package br.unb.cic.lp.gol;
 
 import java.security.InvalidParameterException;
 import java.util.concurrent.TimeUnit;
+
+import com.google.inject.Inject;
+
 import java.util.Scanner;
 
 /**
@@ -20,7 +23,8 @@ public class GameController {
 	public GameEngine getEngine() {
 		return engine;
 	}
-
+	
+	@Inject
 	public void setEngine(GameEngine engine) {
 		this.engine = engine;
 	}

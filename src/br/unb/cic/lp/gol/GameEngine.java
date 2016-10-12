@@ -29,9 +29,9 @@ public abstract class GameEngine {
 	 * @param width
 	 *            dimensao horizontal do ambiente
 	 */
-	public GameEngine(int height, int width, Statistics statistics) {
-		this.height = height;
-		this.width = width;
+	public GameEngine() {
+		this.height = 10;
+		this.width = 10;
 
 		cells = new Cell[height][width];
 
@@ -41,7 +41,7 @@ public abstract class GameEngine {
 			}
 		}
 
-		this.statistics = statistics;
+		this.statistics = new Statistics();
 	}
 
 	/**

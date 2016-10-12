@@ -6,12 +6,14 @@
 
 package br.unb.cic.lp.rules;
 
+import com.google.inject.Inject;
+
 import br.unb.cic.lp.gol.*;
 
 public class highLife extends GameEngine{
 	
-	public highLife(int height, int width, Statistics statistics){
-		super(height, width, statistics);
+	public highLife(){
+		super();
 	}
 	
 	//DEFINICAO DOS METODOS ABSTRATOS (REGRAS) 
