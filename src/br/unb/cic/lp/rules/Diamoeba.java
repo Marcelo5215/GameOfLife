@@ -2,13 +2,12 @@ package br.unb.cic.lp.rules;
 
 import br.unb.cic.lp.gol.*;
 
-public class seeds extends GameEngine{
-
-	public seeds(int height, int width, Statistics statistics){
+public class Diamoeba extends GameEngine{
+	public Diamoeba(int height, int width, Statistics statistics){
 		super(height, width, statistics);
 	}
 	
-	public seeds(int height, int width, Statistics statistics, Cell[][] newCells) {
+	public Diamoeba(int height, int width, Statistics statistics, Cell[][] newCells) {
 		super(height, width, statistics, newCells);
 	}
 	
@@ -23,7 +22,7 @@ public class seeds extends GameEngine{
 		
 		protected boolean shouldRevive(int i, int j) {
 			return (!cells[i][j].isAlive())
-					&& (numberOfNeighborhoodAliveCells(i, j) == 2);
+					&& (numberOfNeighborhoodAliveCells(i, j) == 3);
 		}
 	
 }

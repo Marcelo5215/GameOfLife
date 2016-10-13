@@ -42,7 +42,8 @@ public class GUI extends javax.swing.JFrame {
 		statistics = new Statistics();
 		
     	GameEngine[] AUX = {new quickLife(40, 40, statistics), new highLife(40, 40, statistics),
-    			new lifeWithOutDeath(40, 40, statistics), new seeds(40, 40, statistics)};
+    			new lifeWithOutDeath(40, 40, statistics), new seeds(40, 40, statistics),
+    			new Diamoeba(40, 40, statistics)};
 		engines = new ArrayList<GameEngine>();
 		
 		for(GameEngine e : AUX){
@@ -113,6 +114,13 @@ public class GUI extends javax.swing.JFrame {
         });
         jCheckBoxMenuItem4 = new javax.swing.JCheckBoxMenuItem();
         jCheckBoxMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	RuleActionPerformed(evt);
+            }
+        });
+        
+        jCheckBoxMenuItem5 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
             	RuleActionPerformed(evt);
             }
@@ -197,6 +205,9 @@ public class GUI extends javax.swing.JFrame {
 
         jCheckBoxMenuItem4.setText("Seeds");
         jMenu1.add(jCheckBoxMenuItem4);
+        
+        jCheckBoxMenuItem5.setText("Diamoeba");
+        jMenu1.add(jCheckBoxMenuItem5);
 
         jMenuBar1.add(jMenu1);
 
@@ -367,13 +378,16 @@ public class GUI extends javax.swing.JFrame {
     		jCheckBoxMenuItem2.setState(false);
     		jCheckBoxMenuItem3.setState(false);
     		jCheckBoxMenuItem4.setState(false);
+    		jCheckBoxMenuItem5.setState(false);
     		engines.get(0).setCells(engine.getCells());
     		engine = engines.get(0);
     	}
     	else if(evt.getSource().equals(jCheckBoxMenuItem2)){
+    		jCheckBoxMenuItem1.setState(false);
     		jCheckBoxMenuItem2.setState(true);
     		jCheckBoxMenuItem3.setState(false);
     		jCheckBoxMenuItem4.setState(false);
+    		jCheckBoxMenuItem5.setState(false);
     		engines.get(1).setCells(engine.getCells());
     		engine = engines.get(1);
     	}
@@ -382,6 +396,7 @@ public class GUI extends javax.swing.JFrame {
     		jCheckBoxMenuItem2.setState(false);
     		jCheckBoxMenuItem3.setState(true);
     		jCheckBoxMenuItem4.setState(false);
+    		jCheckBoxMenuItem5.setState(false);
     		engines.get(2).setCells(engine.getCells());
     		engine = engines.get(2);
     	}
@@ -390,8 +405,18 @@ public class GUI extends javax.swing.JFrame {
     		jCheckBoxMenuItem2.setState(false);
     		jCheckBoxMenuItem3.setState(false);
     		jCheckBoxMenuItem4.setState(true);
+    		jCheckBoxMenuItem5.setState(false);
     		engines.get(3).setCells(engine.getCells());
     		engine = engines.get(3);
+    	}
+    	else if(evt.getSource().equals(jCheckBoxMenuItem5)){
+    		jCheckBoxMenuItem1.setState(false);
+    		jCheckBoxMenuItem2.setState(false);
+    		jCheckBoxMenuItem3.setState(false);
+    		jCheckBoxMenuItem4.setState(false);
+    		jCheckBoxMenuItem5.setState(true);
+    		engines.get(4).setCells(engine.getCells());
+    		engine = engines.get(4);
     	}
     	else 
     		return;
@@ -443,6 +468,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem3;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem4;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem5;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -487,10 +513,12 @@ public class GUI extends javax.swing.JFrame {
     private class CellButton extends JButton implements ActionListener{
 
 		private static final long serialVersionUID = 1L;
+		private int count;
 
 		public CellButton(){
     		super();
     		addActionListener(this);
+			count = 0;
     	}
     	
 		public void reset(){
@@ -499,7 +527,13 @@ public class GUI extends javax.swing.JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			this.setBackground(Color.BLACK);		
+			if(count == 0){
+				this.setBackground(Color.BLACK);		
+			}else{
+				this.setBackground(Color.WHITE);
+			}
+			count++;
+			count %= 2;
 		}
     	
     }
