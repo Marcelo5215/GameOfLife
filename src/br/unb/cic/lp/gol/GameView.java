@@ -42,6 +42,14 @@ public abstract class GameView {
 	protected void halt() {
 		controller.halt();
 	}
+	
+	protected void restore(){
+		controller.restore();
+	}
+	
+	protected void changeRule(){
+		controller.changeRule();
+	}
 
 	protected abstract int parseOption(String option);
 

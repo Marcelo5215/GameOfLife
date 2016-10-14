@@ -43,6 +43,23 @@ public abstract class GameEngine {
 
 		this.statistics = statistics;
 	}
+	
+	public GameEngine(int height, int width, Statistics statistics, Cell[][] newCells) {
+		this.height = height;
+		this.width = width;
+
+		cells = new Cell[height][width];
+
+		for (int i = 0; i < height; i++) {
+			for (int j = 0; j < width; j++) {
+				cells[i][j] = new Cell();
+			}
+		}
+		
+		setCells(newCells);
+
+		this.statistics = statistics;
+	}
 
 	/**
 	 * Calcula uma nova geracao do ambiente. Essa implementacao utiliza o
@@ -204,5 +221,22 @@ public abstract class GameEngine {
 
 	public void setWidth(int width) {
 		this.width = width;
+	}
+	
+	public Cell[][] getCells(){
+		return cells;
+	}
+	
+	public void setCells(Cell[][] newState){
+		
+		for(int i = 0 ; i < height; i++){
+			for(int j = 0 ; j < width; j++){
+				if(newState[i][j].isAlive()){
+					cells[i][j].revive();
+				}
+				else
+					cells[i][j].kill();
+		    }   
+	    }
 	}
 }

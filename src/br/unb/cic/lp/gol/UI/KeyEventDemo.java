@@ -1,7 +1,6 @@
 package br.unb.cic.lp.gol.UI;
 
 import java.awt.BorderLayout;
-import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.event.*;
 import javax.swing.*;
@@ -10,7 +9,9 @@ public class KeyEventDemo extends JFrame
         implements KeyListener,
         ActionListener
 {
-    JTextArea displayArea;
+	
+	private static final long serialVersionUID = 3634143447521803724L;
+	JTextArea displayArea;
     JTextField typingArea;
     static final String newline = System.getProperty("line.separator");
      
