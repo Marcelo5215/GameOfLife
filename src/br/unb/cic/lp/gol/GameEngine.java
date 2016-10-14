@@ -3,6 +3,9 @@ package br.unb.cic.lp.gol;
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
 /**
  * Representa um ambiente (environment) do jogo GameOfLife.
  *
@@ -29,7 +32,8 @@ public abstract class GameEngine {
 	 * @param width
 	 *            dimensao horizontal do ambiente
 	 */
-	public GameEngine(int height, int width, Statistics statistics) {
+	@Inject
+	public GameEngine(@Named("height") int height,@Named("width") int width, Statistics statistics) {
 		this.height = height;
 		this.width = width;
 

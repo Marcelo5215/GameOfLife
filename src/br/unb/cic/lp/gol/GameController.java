@@ -2,6 +2,9 @@ package br.unb.cic.lp.gol;
 
 import java.security.InvalidParameterException;
 import java.util.concurrent.TimeUnit;
+
+import com.google.inject.Inject;
+
 import br.unb.cic.lp.MementoGol.*;
 import br.unb.cic.lp.rules.*;
 
@@ -24,6 +27,7 @@ public class GameController {
 		return engine;
 	}
 
+	@Inject
 	public void setEngine(GameEngine engine) {
 		this.engine = engine;
 		originator = new Originator(engine.getHeight(), engine.getWidth());
