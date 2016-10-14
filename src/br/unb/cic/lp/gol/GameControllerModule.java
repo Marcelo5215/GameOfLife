@@ -9,12 +9,13 @@ import com.google.inject.Module;
 import com.google.inject.name.Names;
 
 import br.unb.cic.lp.rules.Diamoeba;
+import br.unb.cic.lp.rules.highLife;
 
 public class GameControllerModule implements Module {
 
 	@Override
 	public void configure(Binder binder) {
-		binder.bind(GameEngine.class).to(Diamoeba.class);
+		binder.bind(GameEngine.class).to(highLife.class);
 		InputStream stream = GameControllerModule.class.getResourceAsStream("/app.properties");
 		Properties appProperties = new Properties();
 		try {

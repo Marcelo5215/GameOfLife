@@ -28,7 +28,7 @@ public class GameController {
 	}
 
 	@Inject
-	public void setEngine(GameEngine engine) {
+	public GameController (GameEngine engine) {
 		this.engine = engine;
 		originator = new Originator(engine.getHeight(), engine.getWidth());
 		caretaker = new Caretaker();

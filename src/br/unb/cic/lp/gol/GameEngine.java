@@ -33,7 +33,7 @@ public abstract class GameEngine {
 	 *            dimensao horizontal do ambiente
 	 */
 	@Inject
-	public GameEngine(@Named("height") int height,@Named("width") int width, Statistics statistics) {
+	public GameEngine(int height, int width, Statistics statistics) {
 		this.height = height;
 		this.width = width;
 

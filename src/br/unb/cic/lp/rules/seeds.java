@@ -1,13 +1,17 @@
 package br.unb.cic.lp.rules;
 
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
+
 import br.unb.cic.lp.gol.*;
 
 public class seeds extends GameEngine{
 
-	public seeds(int height, int width, Statistics statistics){
+	@Inject
+	public seeds(@Named("height") int height,@Named("width") int width, Statistics statistics){
 		super(height, width, statistics);
 	}
-	
+
 	public seeds(int height, int width, Statistics statistics, Cell[][] newCells) {
 		super(height, width, statistics, newCells);
 	}
