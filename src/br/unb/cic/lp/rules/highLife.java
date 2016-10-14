@@ -6,11 +6,15 @@
 
 package br.unb.cic.lp.rules;
 
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
+
 import br.unb.cic.lp.gol.*;
 
 public class highLife extends GameEngine{
 	
-	public highLife(int height, int width, Statistics statistics){
+	@Inject
+	public highLife(@Named("height") int height,@Named("width") int width, Statistics statistics){
 		super(height, width, statistics);
 	}
 	
