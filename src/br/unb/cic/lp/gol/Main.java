@@ -1,28 +1,23 @@
 package br.unb.cic.lp.gol;
 
-import com.google.inject.Guice;
-import com.google.inject.Injector;
-
+import br.unb.cic.lp.rules.*;
 import br.unb.cic.lp.gol.UI.*;
-import br.unb.cic.lp.Dependency.*;
+
 public class Main {
 
 	public static void main(String args[]) {
+		GameController controller = new GameController();
 
 		Statistics statistics = new Statistics();
 
-				
-		Injector injector = Guice.createInjector(new AppInjector());		
+		GameEngine engine = new quickLife(10, 10, statistics);
 		
-		GameController controller = injector.getInstance(GameController.class);
-		
-//		controller.setEngine(engine);
-		GameView board = new TUI(controller, controller.getEngine());
+		GameView board = new TUI(controller, engine);
+
 		controller.setBoard(board);
+		controller.setEngine(engine);
 		controller.setStatistics(statistics);
-		
+
 		controller.start();
 	}
-	
-	
 }

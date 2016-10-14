@@ -11,8 +11,8 @@ import br.unb.cic.lp.gol.*;
 
 public class rule90 extends GameEngine{
 	
-	public rule90(){
-		super();
+	public rule90(int height, int width, Statistics statistics){
+		super(height, width, statistics);
 	}
 	
 	//DEFINICAO DOS METODOS ABSTRATOS (REGRAS) 
