@@ -13,8 +13,10 @@ public class Main {
 
 		Statistics statistics = new Statistics();
 		Injector injector = Guice.createInjector(new GameControllerModule());
-		GameController controller = injector.getInstance(GameController.class);
-		GameView board = new TUI(controller, controller.getEngine());
+		GameEngine engine = injector.getInstance(GameEngine.class);
+		GameController controller = new GameController();
+		controller.setGameEngine(engine);
+		GameView board = new TUI(controller, engine);
 
 		controller.setBoard(board);
 		controller.setStatistics(statistics);

@@ -3,7 +3,9 @@ package br.unb.cic.lp.gol;
 import java.security.InvalidParameterException;
 import java.util.concurrent.TimeUnit;
 
+import com.google.inject.Guice;
 import com.google.inject.Inject;
+import com.google.inject.Injector;
 
 import br.unb.cic.lp.MementoGol.*;
 import br.unb.cic.lp.rules.*;
@@ -28,7 +30,7 @@ public class GameController {
 	}
 
 	@Inject
-	public GameController (GameEngine engine) {
+	public void setGameEngine (GameEngine engine) {
 		this.engine = engine;
 		originator = new Originator(engine.getHeight(), engine.getWidth());
 		caretaker = new Caretaker();
@@ -96,8 +98,13 @@ public class GameController {
 	}
 
 	public void changeRule(){
-		GameEngine newEngine = new lifeWithOutDeath(10, 10, statistics, engine.getCells());
-		engine = newEngine;
+//		GameEngine newEngine = new lifeWithOutDeath(10, 10, statistics, engine.getCells());
+		GameControllerModule module = new GameControllerModule();
+		
+		
+		Injector injector = Guice.createInjector(module);
+		GameEngine nextEngine = injector.getInstance(GameEngine.class);
+		setGameEngine(nextEngine);
 		board.update();
 		board.menu();
 	}
