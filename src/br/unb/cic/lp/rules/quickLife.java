@@ -19,9 +19,7 @@ public class quickLife extends GameEngine{
 		super(height, width, statistics);
 	}
 
-	public quickLife(int height, int width, Statistics statistics, Cell[][] newCells) {
-		super(height, width, statistics, newCells);
-	}
+
 	//DEFINICAO DOS METODOS ABSTRATOS (REGRAS)
 
         @Override

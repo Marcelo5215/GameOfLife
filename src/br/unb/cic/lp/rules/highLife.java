@@ -17,11 +17,7 @@ public class highLife extends GameEngine{
 	public highLife(@Named("height") int height,@Named("width") int width, Statistics statistics){
 		super(height, width, statistics);
 	}
-	
-	public highLife(int height, int width, Statistics statistics, Cell[][] newCells) {
-		super(height, width, statistics, newCells);
-	}
-	
+
 	//DEFINICAO DOS METODOS ABSTRATOS (REGRAS) 
         @Override
 	protected boolean shouldKeepAlive(int i, int j) {

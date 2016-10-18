@@ -13,9 +13,7 @@ public class lifeWithOutDeath extends GameEngine{
 		super(height, width, statistics);
 	}
 
-	public lifeWithOutDeath(int height, int width, Statistics statistics, Cell[][] newCells) {
-		super(height, width, statistics, newCells);
-	}
+
 	
 	//DEFINICAO DOS METODOS ABSTRATOS (REGRAS) 
         @Override

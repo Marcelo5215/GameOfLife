@@ -16,6 +16,13 @@ import br.unb.cic.lp.rules.quickLife;
 import br.unb.cic.lp.rules.seeds;
 
 public class GameControllerModule implements Module {
+	
+	private int currentRule = 1;
+	
+	public void setRule(int rule){
+		currentRule = rule;
+	}
+	
 	@Override
 	public void configure(Binder binder) {
 		InputStream stream = GameControllerModule.class.getResourceAsStream("/app.properties");
@@ -30,23 +37,23 @@ public class GameControllerModule implements Module {
 	@Provides
 	private GameEngine providesGameEngine(Diamoeba diamoeba, highLife highLife,
 			lifeWithOutDeath lifeWithOutDeath, quickLife quickLife, seeds seeds) {
-		double currentRule = Math.random();
-		if(currentRule < 0.2) {
-			return diamoeba;
-		}
-		else if(currentRule < 0.4) {
-			return highLife;
-		}
-		else if(currentRule < 0.6) {
-			return lifeWithOutDeath;
-		}
-		else if(currentRule < 0.8) {
+	
+		if(currentRule == 1) {
 			return quickLife;
 		}
-		else if(currentRule < 1) {
+		else if(currentRule == 2) {
+			return highLife;
+		}
+		else if(currentRule == 3) {
+			return lifeWithOutDeath;
+		}
+		else if(currentRule  == 4) {
 			return seeds;
 		}
-		return diamoeba;
+		else if(currentRule == 5) {
+			return diamoeba;
+		}
+		return quickLife;
 	}
 
 }

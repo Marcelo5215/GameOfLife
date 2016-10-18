@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.inject.Inject;
-import com.google.inject.name.Named;
 /**
  * Representa um ambiente (environment) do jogo GameOfLife.
  *
@@ -47,23 +46,7 @@ public abstract class GameEngine {
 
 		this.statistics = statistics;
 	}
-	
-	public GameEngine(int height, int width, Statistics statistics, Cell[][] newCells) {
-		this.height = height;
-		this.width = width;
 
-		cells = new Cell[height][width];
-
-		for (int i = 0; i < height; i++) {
-			for (int j = 0; j < width; j++) {
-				cells[i][j] = new Cell();
-			}
-		}
-		
-		setCells(newCells);
-
-		this.statistics = statistics;
-	}
 
 	/**
 	 * Calcula uma nova geracao do ambiente. Essa implementacao utiliza o
@@ -242,5 +225,9 @@ public abstract class GameEngine {
 					cells[i][j].kill();
 		    }   
 	    }
+	}
+
+	public void setStatistics(Statistics stat){
+		statistics = stat;
 	}
 }
